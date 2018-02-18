@@ -30,4 +30,20 @@ def handle_text(message):
     elif message.text == "куда отправиться?":
         bot.send_location(message.chat.id, 26.0266276,101.6957962)
 
-bot.polling(none_stop=True, interval=0)
+while True:
+
+    try:
+
+        bot.polling(none_stop=True)
+
+    # ConnectionError and ReadTimeout because of possible timout of the requests library
+
+    # TypeError for moviepy errors
+
+    # maybe there are others, therefore Exception
+
+    except Exception as e:
+
+        logger.error(e)
+
+        time.sleep(15)
